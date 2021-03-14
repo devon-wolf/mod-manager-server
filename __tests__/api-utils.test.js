@@ -1,9 +1,5 @@
 require('dotenv').config();
 
-const { execSync } = require('child_process');
-
-const fakeRequest = require('supertest');
-const app = require('../lib/app');
 const { 
   getGameByDomain, 
   getModByID, 
