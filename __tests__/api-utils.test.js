@@ -34,7 +34,7 @@ test('returns a mod object from the API', async() => {
   expect(data.uid).toEqual(modSample.uid);
 });
 
-// tests for the general shape of the file object
+// tests for the general shape of the file list object
 test('returns a file list for a mod from the API', async() => {
   const data = await getModFileList('stardewvalley', 2400);
 
@@ -44,6 +44,7 @@ test('returns a file list for a mod from the API', async() => {
 
 });
 
+// tests against a full object; if this test breaks, confirm whether there have been changes to the remote data that may be affecting the match
 test('returns a file object from the API', async() => {
   const data = await getModFileDetails('stardewvalley', 2400, 9622);
 	

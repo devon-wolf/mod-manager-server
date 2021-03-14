@@ -7,7 +7,6 @@ module.exports = [{
   'domain_name': 'stardewvalley',
   'version': '3.9.4',
   'author': 'Pathoschild',
-  'last_download': '2021-03-08T05:16:05.000+00:00',
   'game_id': 1
 },
 {
@@ -19,7 +18,6 @@ module.exports = [{
   'domain_name': 'stardewvalley',
   'version': '1.12.16',
   'author': 'FlashShifter',
-  'last_download': '2021-03-08T05:16:05.000+00:00',
   'dependencies': [],
   'game_id': 1
 }];

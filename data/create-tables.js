@@ -33,11 +33,23 @@ async function run() {
                     domain_name VARCHAR(512) NOT NULL,
                     version VARCHAR(512) NOT NULL,
                     author VARCHAR(512) NOT NULL,
-                    last_download TIMESTAMP,
                     dependencies text[],
-                    game_id INTEGER NOT NULL REFERENCES games(id),
-                    owner_id INTEGER NOT NULL REFERENCES users(id)
-            );
+                    game_id INTEGER NOT NULL REFERENCES games(id)
+                );
+                CREATE TABLE user_games (
+                  id SERIAL PRIMARY KEY,
+                  game_name VARCHAR(512) NOT NULL,
+                  game_id INTEGER NOT NULL REFERENCES games(id),
+                  owner_id INTEGER NOT NULL REFERENCES users(id)
+                );
+                CREATE TABLE user_mods (
+                  id SERIAL PRIMARY KEY,
+                  mod_name VARCHAR(512) NOT NULL,
+                  mod_id INTEGER NOT NULL REFERENCES mods(id),
+                  game_id INTEGER NOT NULL REFERENCES games(id),
+                  last_download TIMESTAMP NOT NULL,
+                  owner_id INTEGER NOT NULL REFERENCES users(id)
+                );
         `);
 
     console.log('create tables complete', getEmoji(), getEmoji(), getEmoji());

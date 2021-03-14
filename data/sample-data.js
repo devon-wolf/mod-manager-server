@@ -219,6 +219,34 @@ const gameSample = {
   ]
 };
 
+// GET api.nexusmods.com/v1/games/stardewvalley/mods/2400/files/9622.json
+const fileSample = {
+  'id': [
+    9622,
+    1303
+  ],
+  'uid': 5596342396310,
+  'file_id': 9622,
+  'name': 'SMAPI 2.5.5',
+  'version': '2.5.5',
+  'category_id': 4,
+  'category_name': 'OLD_VERSION',
+  'is_primary': false,
+  'size': 1909,
+  'file_name': 'SMAPI 2.5.5-2400-2-5-5.zip',
+  'uploaded_timestamp': 1529132892,
+  'uploaded_time': '2018-06-16T07:08:12.000+00:00',
+  'mod_version': '2.5.5',
+  'external_virus_scan_url': 'https://www.virustotal.com/file/fc4c1fe29b0895dbd74dd4f97faa8cda8d37feb3650746c1dbd1f9bc36ec1eea/analysis/1529133009/',
+  'description': 'For Stardew 1.2.30–1.2.33 only.',
+  'size_kb': 1909,
+  'changelog_html': null,
+  'content_preview_link': 'https://file-metadata.nexusmods.com/file/nexus-files-s3-meta/1303/2400/SMAPI 2.5.5-2400-2-5-5.zip.json'
+};
+
+
+// GET api.nexusmods.com/v1/games/stardewvalley/mods/2400/files.json
+/* keep  this at the bottom, it's super long */
 const fileListSample = {
   'files': [
     {
@@ -4136,30 +4164,6 @@ const fileListSample = {
       'uploaded_time': '2021-03-08T05:16:05.000+00:00'
     }
   ]
-};
-
-const fileSample = {
-  'id': [
-    9622,
-    1303
-  ],
-  'uid': 5596342396310,
-  'file_id': 9622,
-  'name': 'SMAPI 2.5.5',
-  'version': '2.5.5',
-  'category_id': 4,
-  'category_name': 'OLD_VERSION',
-  'is_primary': false,
-  'size': 1909,
-  'file_name': 'SMAPI 2.5.5-2400-2-5-5.zip',
-  'uploaded_timestamp': 1529132892,
-  'uploaded_time': '2018-06-16T07:08:12.000+00:00',
-  'mod_version': '2.5.5',
-  'external_virus_scan_url': 'https://www.virustotal.com/file/fc4c1fe29b0895dbd74dd4f97faa8cda8d37feb3650746c1dbd1f9bc36ec1eea/analysis/1529133009/',
-  'description': 'For Stardew 1.2.30–1.2.33 only.',
-  'size_kb': 1909,
-  'changelog_html': null,
-  'content_preview_link': 'https://file-metadata.nexusmods.com/file/nexus-files-s3-meta/1303/2400/SMAPI 2.5.5-2400-2-5-5.zip.json'
 };
 
 module.exports = { modSample, modSample2, gameSample, fileListSample, fileSample };
