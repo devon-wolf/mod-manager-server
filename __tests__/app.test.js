@@ -31,31 +31,17 @@ describe('app routes', () => {
       return client.end(done);
     });
 
-    test('returns animals', async() => {
+    test('returns games', async() => {
 
-      const expectation = [
-        {
-          'id': 1,
-          'name': 'bessie',
-          'coolfactor': 3,
-          'owner_id': 1
-        },
-        {
-          'id': 2,
-          'name': 'jumpy',
-          'coolfactor': 4,
-          'owner_id': 1
-        },
-        {
-          'id': 3,
-          'name': 'spot',
-          'coolfactor': 10,
-          'owner_id': 1
-        }
-      ];
+      const expectation = [{
+        id: 1,
+        'db_id': 1303,
+        'name': 'Stardew Valley',
+        'domain_name': 'stardewvalley',
+      }];
 
       const data = await fakeRequest(app)
-        .get('/animals')
+        .get('/games')
         .expect('Content-Type', /json/)
         .expect(200);
 
