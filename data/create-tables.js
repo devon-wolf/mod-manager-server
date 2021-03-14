@@ -47,7 +47,7 @@ async function run() {
                   mod_name VARCHAR(512) NOT NULL,
                   mod_id INTEGER NOT NULL REFERENCES mods(id),
                   game_id INTEGER NOT NULL REFERENCES games(id),
-                  last_download TIMESTAMP NOT NULL,
+                  last_download VARCHAR(512) NOT NULL,
                   owner_id INTEGER NOT NULL REFERENCES users(id)
                 );
         `);

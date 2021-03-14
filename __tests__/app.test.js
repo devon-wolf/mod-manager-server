@@ -108,5 +108,84 @@ describe('app routes', () => {
       expect(data.body).toEqual(expectation);
     });
 
+    test('gets all games from the library as the test user', async() => {
+
+      const expectation = [{
+        game_name: 'Stardew Valley',
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      }];
+
+      const data = await fakeRequest(app)
+        .get('/api/games')
+        .set({ Authorization: token })
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+    test('gets a game by its ID from the library as the test user', async() => {
+
+      const expectation = {
+        game_name: 'Stardew Valley',
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .get('/api/games/2')
+        .set({ Authorization: token })
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+    test('deletes a game from the library as the test user', async() => {
+      const expectation = {
+        game_name: 'Stardew Valley',
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .delete('/api/games/2')
+        .set({ Authorization: token })
+        .expect('Content-Type', /json/)
+        .expect(200);
+      
+      expect(data.body).toEqual(expectation);
+
+    });
+
+    test('adds a mod to the library as the test user', async() => {
+
+      const newMod = {
+        mod_name: 'Stardew Valley Expanded',
+        mod_id: 2,
+        game_id: 1,
+        last_download: '2021-03-08T05:16:05.000+00:00'
+      };
+
+      const expectation = {
+        ...newMod,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .post('/api/mods')
+        .set({ Authorization: token })
+        .send(newMod)
+        .expect('Content-Type', /json/);
+        //.expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
   });
 });
