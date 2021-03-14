@@ -181,8 +181,73 @@ describe('app routes', () => {
         .post('/api/mods')
         .set({ Authorization: token })
         .send(newMod)
-        .expect('Content-Type', /json/);
-        //.expect(200);
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+    test('edits a mod in the library as the test user', async() => {
+
+      const timeUpdate = {
+        last_download: '2021-03-11T05:45:05.000+00:00'
+      };
+
+      const expectation = {
+        ...timeUpdate,
+        mod_name: 'Stardew Valley Expanded',
+        mod_id: 2,
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .put('/api/mods/2')
+        .set({ Authorization: token })
+        .send(timeUpdate)
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+    test('gets a mod by its ID from the library as the test user', async() => {
+
+      const expectation = {
+        last_download: '2021-03-11T05:45:05.000+00:00',
+        mod_name: 'Stardew Valley Expanded',
+        mod_id: 2,
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .get('/api/mods/2')
+        .set({ Authorization: token })
+        .expect('Content-Type', /json/)
+        .expect(200);
+
+      expect(data.body).toEqual(expectation);
+    });
+
+    test('deletes a mod by its ID from the library as the test user', async() => {
+
+      const expectation = {
+        last_download: '2021-03-11T05:45:05.000+00:00',
+        mod_name: 'Stardew Valley Expanded',
+        mod_id: 2,
+        game_id: 1,
+        owner_id: 2,
+        id: 2
+      };
+
+      const data = await fakeRequest(app)
+        .delete('/api/mods/2')
+        .set({ Authorization: token })
+        .expect('Content-Type', /json/)
+        .expect(200);
 
       expect(data.body).toEqual(expectation);
     });
