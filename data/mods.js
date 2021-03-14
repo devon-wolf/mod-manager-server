@@ -18,6 +18,5 @@ module.exports = [{
   'domain_name': 'stardewvalley',
   'version': '1.12.16',
   'author': 'FlashShifter',
-  'dependencies': [],
   'game_id': 1
 }];
