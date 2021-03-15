@@ -1,6 +1,7 @@
 require('dotenv').config();
 
 const { 
+  searchGamesByName,
   getGameByDomain, 
   getModByID, 
   getModFileList, 
@@ -12,7 +13,16 @@ const {
   modSample,
   fileSample
 } = require('../data/sample-data');
+const { search } = require('../lib/app');
 
+test('returns a game object from the API based on a search query', async() => {
+  const data = await searchGamesByName('Stardew Valley');
+  
+  const badData = await searchGamesByName('This is a fake game');
+  
+  expect(data.name).toEqual('Stardew Valley');
+  expect(badData.name).toEqual('no match found');
+});
 
 // tests only check properties that are likely to be stable (IDs and names, in contrast to, for example, download count)
 test('returns a game object from the API', async() => {
